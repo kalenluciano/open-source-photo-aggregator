@@ -1,5 +1,5 @@
 const db = require('../db');
-const { NewsEvents, User } = require('../models');
+const { NewsEvent, User } = require('../models');
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -25,4 +25,14 @@ const main = async () => {
 			userId: user2._id
 		}
 	];
+
+	await NewsEvent.insertMany(newsEvents);
+	console.log('Created events!');
 };
+
+const run = async () => {
+	await main();
+	db.close();
+};
+
+run();

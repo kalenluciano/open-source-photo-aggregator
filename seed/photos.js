@@ -42,4 +42,14 @@ const main = async () => {
 			newsEventId: mahsaAminiProtests._id
 		}
 	];
+
+	await Photo.insertMany(photos);
+	console.log('Photos created!');
 };
+
+const run = async () => {
+	await main();
+	db.close();
+};
+
+run();
