@@ -9,8 +9,7 @@ const NewsEvent = new Schema(
 		city: String,
 		state: String,
 		zip: Number,
-		userId: { type: Schema.Types.ObjectId, ref: 'User' },
-		photoIds: [{ type: Schema.Types.ObjectId, ref: 'Photo' }]
+		userId: { type: Schema.Types.ObjectId, ref: 'User' }
 	},
 	{ timestamps: true }
 );
