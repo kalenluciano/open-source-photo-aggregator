@@ -4,11 +4,13 @@ const NewsEvent = new Schema(
 	{
 		newsEventName: { type: String, required: true },
 		description: String,
-		date: { type: Date, required: true },
+		startDate: { type: Date, required: true },
+		endDate: Date,
 		streetAddress: String,
 		city: String,
 		state: String,
 		zip: Number,
+		countries: [{ type: String }],
 		userId: { type: Schema.Types.ObjectId, ref: 'User' }
 	},
 	{ timestamps: true }

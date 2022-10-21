@@ -12,10 +12,10 @@ const main = async () => {
 			lastName: 'Luciano'
 		},
 		{
-			username: 'chrisvazquez',
-			emailAddress: 'chris@email.com',
-			firstName: 'Chris',
-			lastName: 'Vazquez'
+			username: 'darafshkaviyani',
+			emailAddress: 'Darafsh_Wiki@Hotmail.com',
+			firstName: 'Darafsh',
+			lastName: 'Kaviyani'
 		}
 	];
 	await User.insertMany(users);
