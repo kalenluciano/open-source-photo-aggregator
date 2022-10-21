@@ -2,6 +2,7 @@ const { Schema } = require('mongoose');
 
 const Photo = new Schema(
 	{
+		url: { type: String, required: true },
 		photoTitle: { type: String, required: true },
 		description: String,
 		time: { type: Date, required: true },
