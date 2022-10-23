@@ -25,8 +25,8 @@ const main = async () => {
 			country: 'United States',
 			upvotes: 0,
 			downvotes: 0,
-			userId: user1._id,
-			newsEventId: hurricaneIan._id
+			userId: user1[0]._id,
+			newsEventId: hurricaneIan[0]._id
 		},
 		{
 			url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Amir_Kabir_University_uprising_September_2022_%283%29.jpg/1600px-Amir_Kabir_University_uprising_September_2022_%283%29.jpg?20220920073654',
@@ -38,8 +38,8 @@ const main = async () => {
 			country: 'Iran',
 			upvotes: 0,
 			downvotes: 0,
-			userId: user2._id,
-			newsEventId: mahsaAminiProtests._id
+			userId: user2[0]._id,
+			newsEventId: mahsaAminiProtests[0]._id
 		}
 	];
 

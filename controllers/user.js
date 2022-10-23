@@ -21,7 +21,7 @@ const getUser = async (req, res) => {
 
 const createUser = async (req, res) => {
 	try {
-		const user = new User(req.body);
+		const user = await new User(req.body);
 		await user.save();
 		return res.status(201).json(user);
 	} catch (e) {
@@ -38,7 +38,7 @@ const updateUser = async (req, res) => {
 				user[key] = req.body[key];
 			}
 		}
-		user.save();
+		await user.save();
 		res.status(201).json(user);
 	} catch (e) {
 		return res.status(500).json({ error: e.message });

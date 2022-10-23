@@ -15,14 +15,14 @@ const main = async () => {
 			startDate: new Date(2022, 9, 23),
 			endDate: new Date(2022, 10, 2),
 			countries: ['United States', 'Cuba'],
-			userId: user1._id
+			userId: user1[0]._id
 		},
 		{
 			newsEventName: 'Mahsa Amini Protests',
 			description: `An ongoing series of protests against the Iranian government sparked by the death of 22-year-old Mahsa Amini, who had been arrested for wearing an 'improper' hijab.`,
 			startDate: new Date(2022, 9, 16),
 			countries: ['Iran'],
-			userId: user2._id
+			userId: user2[0]._id
 		}
 	];
 
