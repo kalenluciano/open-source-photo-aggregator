@@ -24,7 +24,7 @@ const App = () => {
 					path="/events/update/:id"
 					element={<UpdateEventForm />}
 				/>
-				<Route path="/photos" element={<PhotosList />} />
+				<Route path="/photos/:id" element={<PhotosList />} />
 				<Route path="/photos/:id" element={<Photo />} />
 				<Route
 					path="/photos/update/:id"
