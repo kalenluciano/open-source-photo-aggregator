@@ -4,6 +4,8 @@ const { User } = require('../models');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const main = async () => {
+	User.collection.drop();
+
 	const users = [
 		{
 			username: 'kalenluciano',

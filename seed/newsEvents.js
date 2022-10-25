@@ -4,6 +4,8 @@ const { NewsEvent, User } = require('../models');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const main = async () => {
+	NewsEvent.collection.drop();
+
 	const user1 = await User.find({ username: 'kalenluciano' });
 	const user2 = await User.find({ username: 'darafshkaviyani' });
 
