@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-const Event = ({event, handleClick}) => {    
+const EventCard = ({event, handleClick, photos}) => {    
     const [createdAtString, setCreatedAtString] = useState('')
     const [startDateString, setStartDateString] = useState('')
     const [endDateString, setEndDateString] = useState('') 
+    const [eventImage, setEventImage] = useState('')
+
+    const getEventImage = () => {
+        photos.forEach((photo) => {
+            if (photo.newsEventId._id === event._id) {
+                setEventImage(photo.url)
+                return
+            }
+        })
+    }
 
     const getCreatedAtDateString = () => {
         const createdAtDate = new Date(event.createdAt)
@@ -27,6 +37,7 @@ const Event = ({event, handleClick}) => {
     }
 
     useEffect(() => {
+        getEventImage()
         getCreatedAtDateString()
         getStartDateString()
         getEndDateString()
@@ -34,7 +45,7 @@ const Event = ({event, handleClick}) => {
 
     return (
         <div onClick={() => handleClick(event._id)}>
-            <img src="" alt={event.newsEventName}></img>
+            {eventImage ? (<img src={eventImage} alt={event.newsEventName}></img>) : null}
             <h1>{event.newsEventName}</h1>
             <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p>
             <p>Started: {startDateString}</p> 
@@ -45,4 +56,4 @@ const Event = ({event, handleClick}) => {
     )
 }
 
-export default Event
+export default EventCard

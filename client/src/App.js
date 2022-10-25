@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import AddPhotoForm from './components/AddPhotoForm';
 import AddEventForm from './components/AddEventForm';
 import EventsList from './components/EventsList';
-import Event from './components/Event';
+import EventCard from './components/EventCard';
 import UpdateEventForm from './components/UpdateEventForm';
 import PhotosList from './components/PhotosList';
 import Photo from './components/Photo';
@@ -19,7 +19,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/events" element={<EventsList />} />
-				<Route path="/events/:id" element={<Event />} />
+				<Route path="/events/:id" element={<EventCard />} />
 				<Route
 					path="/events/update/:id"
 					element={<UpdateEventForm />}
