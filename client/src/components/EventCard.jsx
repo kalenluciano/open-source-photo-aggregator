@@ -41,7 +41,7 @@ const EventCard = ({event, handleClick, photos}) => {
         getCreatedAtDateString()
         getStartDateString()
         getEndDateString()
-    })
+    }, [])
 
     return (
         <div onClick={() => handleClick(event._id)}>

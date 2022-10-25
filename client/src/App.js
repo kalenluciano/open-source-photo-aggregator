@@ -1,25 +1,46 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav';
-import Home from './components/Home';
+import Home from './pages/Home';
 import Footer from './components/Footer';
 import AddPhotoForm from './components/AddPhotoForm';
 import AddEventForm from './components/AddEventForm';
-import EventsList from './components/EventsList';
+import EventsList from './pages/EventsList';
 import EventCard from './components/EventCard';
 import UpdateEventForm from './components/UpdateEventForm';
-import PhotosList from './components/PhotosList';
+import PhotosList from './pages/PhotosList';
 import Photo from './components/Photo';
 import UpdatePhotoForm from './components/UpdatePhotoForm';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { BASE_URL } from './globals';
 
 const App = () => {
+	const [photos, setPhotos] = useState([]);
+
+	const getPhotos = async () => {
+		const response = await axios.get(`${BASE_URL}/photos`);
+		console.log(response.data);
+		setPhotos(response.data);
+	};
+
+	useEffect(() => {
+		getPhotos();
+	}, []);
+
 	return (
 		<div className="App">
 			<Nav />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/events" element={<EventsList />} />
-				<Route path="/events/:id" element={<EventCard />} />
+				<Route path="/" element={<Home photos={photos} />} />
+				<Route
+					path="/events"
+					element={<EventsList photos={photos} />}
+				/>
+				<Route
+					path="/events/:id"
+					element={<EventCard photos={photos} />}
+				/>
 				<Route
 					path="/events/update/:id"
 					element={<UpdateEventForm />}

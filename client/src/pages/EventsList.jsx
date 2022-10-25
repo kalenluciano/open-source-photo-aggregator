@@ -1,12 +1,11 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import {BASE_URL} from '../globals'
-import EventCard from './EventCard'
+import EventCard from '../components/EventCard'
 import { useNavigate } from 'react-router-dom'
 
-const EventsList = () => {
+const EventsList = ({photos}) => {
     const [events, setEvents] = useState([])
-    const [photos, setPhotos] = useState([])
 
     let navigate = useNavigate()
 
@@ -19,15 +18,8 @@ const EventsList = () => {
         navigate(`/photos/${eventId}`)
     }
 
-    const getPhotos = async () => {
-        const response = await axios.get(`${BASE_URL}/photos`);
-        console.log(response.data)
-        setPhotos(response.data)
-    }
-
     useEffect(() => {
         getEvents()
-        getPhotos()
     }, [])
 
     return (
