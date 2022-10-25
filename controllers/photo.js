@@ -2,7 +2,9 @@ const { Photo } = require('../models');
 
 const getAllPhotos = async (req, res) => {
 	try {
-		const allPhotos = await Photo.find({});
+		const allPhotos = await Photo.find({})
+			.populate('userId')
+			.populate('newsEventId');
 		return res.status(200).json(allPhotos);
 	} catch (e) {
 		return res.status(500).json({ error: e.message });
@@ -12,7 +14,9 @@ const getAllPhotos = async (req, res) => {
 const getPhoto = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const photo = await Photo.findById(id);
+		const photo = await Photo.findById(id)
+			.populate('userId')
+			.populate('newsEventId');
 		return res.status(200).json(photo);
 	} catch (e) {
 		return res.status(500).json({ error: e.message });
