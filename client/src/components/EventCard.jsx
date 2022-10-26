@@ -5,6 +5,7 @@ const EventCard = ({event, handleClick, photos}) => {
     const [startDateString, setStartDateString] = useState('')
     const [endDateString, setEndDateString] = useState('') 
     const [eventImage, setEventImage] = useState('')
+    const [validLocation, setValidLocation] = useState(false)
 
     const getEventImage = () => {
         photos.forEach((photo) => {
@@ -36,11 +37,18 @@ const EventCard = ({event, handleClick, photos}) => {
         setEndDateString(endDateString)
     }
 
+    const checkValidLocation = () => {
+        if (event.city || event.state || event.countries[0] || event.streetAddress || event.streetAddress2 || event.zip) {
+            setValidLocation(true)
+        }
+    }
+
     useEffect(() => {
         getEventImage()
         getCreatedAtDateString()
         getStartDateString()
         getEndDateString()
+        checkValidLocation()
     }, [])
 
     return (
@@ -50,8 +58,18 @@ const EventCard = ({event, handleClick, photos}) => {
             <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p>
             <p>Started: {startDateString}</p> 
             {endDateString ? (<p>Ended: {endDateString}</p>) : null}
-            <p>{event?.description}</p>
-            <div>{event.countries.map((country, index) => <p key={index}>{country}</p>)}</div>
+            {event.description && <p>{event.description}</p>}
+            {validLocation && (
+                    <div>
+                        <p>Location: </p>
+                        {event.streetAddress && <p>{event.streetAddress}</p>}
+                        {event.streetAddress2 && <p>{event.streetAddress2}</p>}
+                        {event.city && <p>{event.city}</p>}
+                        {event.state && <p>{event.state}</p>}
+                        {event.zip && <p>{event.zip}</p>}
+                        {event.countries && event.countries.map((country, index) => <p key={index}>{country}</p>)}
+                    </div>
+                )}
         </div>
     )
 }

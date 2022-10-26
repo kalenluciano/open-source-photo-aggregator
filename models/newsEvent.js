@@ -7,6 +7,7 @@ const NewsEvent = new Schema(
 		startDate: { type: Date, required: true },
 		endDate: Date,
 		streetAddress: String,
+		streetAddress2: String,
 		city: String,
 		state: String,
 		zip: Number,

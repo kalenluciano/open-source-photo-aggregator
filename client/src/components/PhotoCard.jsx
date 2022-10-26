@@ -34,7 +34,7 @@ const PhotoCard = ({photo}) => {
                 {photo.userId.username && (<p>Posted by {photo.userId.username}</p>)}
                 <p>Upvotes: {photo.upvotes}</p>
                 <p>Downvotes: {photo.downvotes}</p>
-                {photo.description && <p>{photoDate}</p>}
+                {photo.dateTime && <p>{photoDate}</p>}
                 {validLocation && (
                     <div>
                         <p>Location: </p>
