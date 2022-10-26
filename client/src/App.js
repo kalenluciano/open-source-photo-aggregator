@@ -9,7 +9,7 @@ import EventsList from './pages/EventsList';
 import EventCard from './components/EventCard';
 import UpdateEventForm from './components/UpdateEventForm';
 import PhotosList from './pages/PhotosList';
-import Photo from './components/Photo';
+import PhotoCard from './components/PhotoCard';
 import UpdatePhotoForm from './components/UpdatePhotoForm';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -49,7 +49,7 @@ const App = () => {
 					path="/photos/:id"
 					element={<PhotosList photos={photos} />}
 				/>
-				<Route path="/photos/:id" element={<Photo />} />
+				<Route path="/photos/:id" element={<PhotoCard />} />
 				<Route
 					path="/photos/update/:id"
 					element={<UpdatePhotoForm />}

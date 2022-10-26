@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
-import Photo from '../components/Photo'
+import PhotoCard from '../components/PhotoCard'
 
 const PhotosList = ({photos}) => {
     const [eventPhotos, setEventPhotos] = useState([])
@@ -23,7 +23,7 @@ const PhotosList = ({photos}) => {
         <div>
             <h1>Photos List</h1>
             {eventPhotos.map((eventPhoto) => (
-                <Photo photo={eventPhoto} />
+                <PhotoCard photo={eventPhoto} key={eventPhoto._id} />
             ))}
         </div>
     )
