@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { BASE_URL } from "../globals";
 
 const EventCard = ({event, handleClick, photos}) => {    
     const [createdAtString, setCreatedAtString] = useState('')
@@ -58,6 +60,10 @@ const EventCard = ({event, handleClick, photos}) => {
         navigate(`update/${eventId}`)
     }
 
+    const handleDeleteClick = async (eventId) => {
+        await axios.delete(`${BASE_URL}/news-events/${eventId}/delete`)
+    }
+
     useEffect(() => {
         getEventImage()
         getCreatedAtDateString()
@@ -87,6 +93,7 @@ const EventCard = ({event, handleClick, photos}) => {
                     </div>
                 )}
             <button onClick={() => handleEditClick(event._id)}>Edit</button>
+            <button onClick={() => handleDeleteClick(event._id)}>Delete</button>
         </div>
     )
 }

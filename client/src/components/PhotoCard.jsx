@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react"
+import axios from 'axios'
+import { BASE_URL } from "../globals"
+import { useNavigate } from 'react-router-dom'
 
 const PhotoCard = ({photo}) => {
     const [validLocation, setValidLocation] = useState(false)
     const [photoDate, setPhotoDate] = useState('')
     
+    let navigate = useNavigate()
+
     const checkValidLocation = () => {
         if (photo.city || photo.state || photo.country || photo.streetAddress || photo.streetAddress2 || photo.zip) {
             setValidLocation(true)
@@ -17,6 +22,14 @@ const PhotoCard = ({photo}) => {
         const date = new Date(photo.dateTime)
         const dateString = date.toDateString()
         setPhotoDate(dateString)
+    }
+
+    const handleEditClick = (photoId) => {
+        navigate(`/photos/update/${photoId}`)
+    }
+
+    const handleDeleteClick = async (photoId) => {
+        await axios.delete(`${BASE_URL}/photos/${photoId}/delete`)
     }
 
     useEffect(() => {
@@ -46,6 +59,8 @@ const PhotoCard = ({photo}) => {
                         {photo.country && <p>{photo.country}</p>}
                     </div>
                 )}
+                <button onClick={() => handleEditClick(photo._id)}>Edit</button>
+                <button onClick={() => handleDeleteClick(photo._id)}>Delete</button>
             </div>
         </div>
     )
