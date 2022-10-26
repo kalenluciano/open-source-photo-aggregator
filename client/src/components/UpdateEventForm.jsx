@@ -1,8 +1,4 @@
-import { useState } from "react"
-
 const UpdateEventForm = () => {
-    
-    const [initialState, setInitialState] = useState()
 
     return (
         <div>

@@ -20,7 +20,6 @@ const App = () => {
 
 	const getPhotos = async () => {
 		const response = await axios.get(`${BASE_URL}/photos`);
-		console.log(response.data);
 		setPhotos(response.data);
 	};
 

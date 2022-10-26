@@ -6,6 +6,7 @@ const EventCard = ({event, handleClick, photos}) => {
     const [endDateString, setEndDateString] = useState('') 
     const [eventImage, setEventImage] = useState('')
     const [validLocation, setValidLocation] = useState(false)
+    const [validEndDate, setValidEndDate] = useState(false)
 
     const getEventImage = () => {
         photos.forEach((photo) => {
@@ -29,7 +30,7 @@ const EventCard = ({event, handleClick, photos}) => {
     }
 
     const getEndDateString = () => {
-        if (event.endDate === undefined) {
+        if (event.endDate === undefined || event.endDate === null) {
             return
         }
         const endDate = new Date(event.endDate)
@@ -43,12 +44,20 @@ const EventCard = ({event, handleClick, photos}) => {
         }
     }
 
+    const checkValidEndDate = () => {
+        if (event.endDate === undefined || event.endDate === null) {
+            return
+        }
+        setValidEndDate(true)
+    }
+
     useEffect(() => {
         getEventImage()
         getCreatedAtDateString()
         getStartDateString()
         getEndDateString()
         checkValidLocation()
+        checkValidEndDate()
     }, [])
 
     return (
@@ -57,7 +66,7 @@ const EventCard = ({event, handleClick, photos}) => {
             <h1>{event.newsEventName}</h1>
             <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p>
             <p>Started: {startDateString}</p> 
-            {endDateString ? (<p>Ended: {endDateString}</p>) : null}
+            {validEndDate && (<p>Ended: {endDateString}</p>)}
             {event.description && <p>{event.description}</p>}
             {validLocation && (
                     <div>
