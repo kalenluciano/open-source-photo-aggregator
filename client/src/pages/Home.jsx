@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BASE_URL } from '../globals';

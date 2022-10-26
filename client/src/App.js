@@ -33,10 +33,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/events" element={<EventsList />} />
-				<Route
-					path="/events/:id"
-					element={<EventCard photos={photos} />}
-				/>
+				<Route path="/events/:id" element={<EventCard />} />
 				<Route
 					path="/events/update/:id"
 					element={<UpdateEventForm />}

@@ -5,9 +5,15 @@ import EventCard from '../components/EventCard'
 import { useNavigate } from 'react-router-dom'
 
 const EventsList = () => {
+    const [photos, setPhotos] = useState([]);
     const [events, setEvents] = useState([])
 
     let navigate = useNavigate()
+
+    const getPhotos = async () => {
+        const response = await axios.get(`${BASE_URL}/photos`);
+        await setPhotos(response.data);
+    };
 
     const getEvents = async () => {
         const response = await axios.get(`${BASE_URL}/news-events`)
@@ -19,6 +25,7 @@ const EventsList = () => {
     }
 
     useEffect(() => {
+        getPhotos()
         getEvents()
     }, [])
 
@@ -26,7 +33,7 @@ const EventsList = () => {
         <div>
             <h1>Events List</h1>
                 {events.map((event) => (
-                    <EventCard event={event} key={event._id} handleClick={handleClick} />
+                    <EventCard event={event} key={event._id} handleClick={handleClick} photos={photos} />
                 ))}
         </div>
     )
