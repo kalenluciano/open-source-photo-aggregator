@@ -27,7 +27,7 @@ const AddEventForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await axios.post(`${BASE_URL}/news-events/add`, formState)
+        await axios.post(`${BASE_URL}/news-events/add`, formState)
         setFormState(initialState)
     }
 
