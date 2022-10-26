@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { BASE_URL } from "../globals";
 
-const EventCard = ({event, handleClick, photos}) => {    
+const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {    
     const [createdAtString, setCreatedAtString] = useState('')
     const [startDateString, setStartDateString] = useState('')
     const [endDateString, setEndDateString] = useState('') 
@@ -58,10 +58,6 @@ const EventCard = ({event, handleClick, photos}) => {
 
     const handleEditClick = (eventId) => {
         navigate(`update/${eventId}`)
-    }
-
-    const handleDeleteClick = async (eventId) => {
-        await axios.delete(`${BASE_URL}/news-events/${eventId}/delete`)
     }
 
     useEffect(() => {
