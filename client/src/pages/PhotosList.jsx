@@ -6,6 +6,7 @@ import { BASE_URL } from '../globals';
 
 const PhotosList = () => {
     const [eventPhotos, setEventPhotos] = useState([])
+    const [deletedPhoto, setDeletedPhoto] = useState(false)
 
     let { id } = useParams()
 
@@ -18,15 +19,20 @@ const PhotosList = () => {
         setEventPhotos(eventPhotosList)
     }
 
+    const handleDeleteClick = async (photoId) => {
+        await axios.delete(`${BASE_URL}/photos/${photoId}/delete`)
+        setDeletedPhoto(!deletedPhoto)
+    }
+
     useEffect(() => {
         getEventPhotos()
-    }, [])
+    }, [deletedPhoto])
 
     return (
         <div>
             <h1>Photos List</h1>
             {eventPhotos.map((eventPhoto) => (
-                <PhotoCard photo={eventPhoto} key={eventPhoto._id} />
+                <PhotoCard photo={eventPhoto} key={eventPhoto._id} handleDeleteClick={handleDeleteClick} />
             ))}
         </div>
     )

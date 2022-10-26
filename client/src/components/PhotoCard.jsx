@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from "../globals"
 import { useNavigate } from 'react-router-dom'
 
-const PhotoCard = ({photo}) => {
+const PhotoCard = ({photo, handleDeleteClick}) => {
     const [validLocation, setValidLocation] = useState(false)
     const [photoDate, setPhotoDate] = useState('')
     
@@ -26,10 +26,6 @@ const PhotoCard = ({photo}) => {
 
     const handleEditClick = (photoId) => {
         navigate(`/photos/update/${photoId}`)
-    }
-
-    const handleDeleteClick = async (photoId) => {
-        await axios.delete(`${BASE_URL}/photos/${photoId}/delete`)
     }
 
     useEffect(() => {
