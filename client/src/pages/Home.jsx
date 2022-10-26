@@ -1,6 +1,20 @@
 import {NavLink} from 'react-router-dom'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { BASE_URL } from './globals';
 
 const Home = ({photos}) => {
+
+    const [photos, setPhotos] = useState([]);
+
+	const getPhotos = async () => {
+		const response = await axios.get(`${BASE_URL}/photos`);
+		setPhotos(response.data);
+	};
+
+	useEffect(() => {
+		getPhotos();
+	}, []);
 
     return (
         <div>

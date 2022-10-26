@@ -31,7 +31,7 @@ const App = () => {
 		<div className="App">
 			<Nav />
 			<Routes>
-				<Route path="/" element={<Home photos={photos} />} />
+				<Route path="/" element={<Home />} />
 				<Route
 					path="/events"
 					element={<EventsList photos={photos} />}
