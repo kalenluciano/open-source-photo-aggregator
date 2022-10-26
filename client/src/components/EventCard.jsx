@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
+import { BASE_URL } from '../globals';
 
-const EventCard = ({event, handleClick, photos}) => {    
+const EventCard = ({event, handleClick}) => {    
+    const [photos, setPhotos] = useState([]);
     const [createdAtString, setCreatedAtString] = useState('')
     const [startDateString, setStartDateString] = useState('')
     const [endDateString, setEndDateString] = useState('') 
     const [eventImage, setEventImage] = useState('')
     const [validLocation, setValidLocation] = useState(false)
     const [validEndDate, setValidEndDate] = useState(false)
+
+    const getPhotos = async () => {
+        const response = await axios.get(`${BASE_URL}/photos`);
+        await setPhotos(response.data);
+    };
 
     const getEventImage = () => {
         photos.forEach((photo) => {
@@ -52,6 +60,7 @@ const EventCard = ({event, handleClick, photos}) => {
     }
 
     useEffect(() => {
+        getPhotos()
         getEventImage()
         getCreatedAtDateString()
         getStartDateString()

@@ -4,7 +4,7 @@ import {BASE_URL} from '../globals'
 import EventCard from '../components/EventCard'
 import { useNavigate } from 'react-router-dom'
 
-const EventsList = ({photos}) => {
+const EventsList = () => {
     const [events, setEvents] = useState([])
 
     let navigate = useNavigate()
@@ -26,7 +26,7 @@ const EventsList = ({photos}) => {
         <div>
             <h1>Events List</h1>
                 {events.map((event) => (
-                    <EventCard event={event} key={event._id} handleClick={handleClick} photos={photos} />
+                    <EventCard event={event} key={event._id} handleClick={handleClick} />
                 ))}
         </div>
     )

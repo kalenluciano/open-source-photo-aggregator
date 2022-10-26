@@ -32,10 +32,7 @@ const App = () => {
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route
-					path="/events"
-					element={<EventsList photos={photos} />}
-				/>
+				<Route path="/events" element={<EventsList />} />
 				<Route
 					path="/events/:id"
 					element={<EventCard photos={photos} />}

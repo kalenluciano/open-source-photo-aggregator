@@ -1,9 +1,9 @@
 import {NavLink} from 'react-router-dom'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { BASE_URL } from './globals';
+import { BASE_URL } from '../globals';
 
-const Home = ({photos}) => {
+const Home = () => {
 
     const [photos, setPhotos] = useState([]);
 
