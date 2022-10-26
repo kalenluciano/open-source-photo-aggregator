@@ -1,8 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BASE_URL } from "../globals"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useEffect } from "react"
 
 const UpdateEventForm = () => {
     const [event, setEvent] = useState({})
@@ -24,7 +23,7 @@ const UpdateEventForm = () => {
 
     const getEvent = async () => {
         const response = await axios.get(`${BASE_URL}/news-events/${id}`)
-        setEvent(response.data)
+        await setEvent(response.data)
     }
 
     const handleChange = e => {
@@ -39,7 +38,7 @@ const UpdateEventForm = () => {
                 fieldsToUpdate[field] = formState[field] 
             }
         }
-        const response = await axios.put(`${BASE_URL}/news-events/${id}/update`, fieldsToUpdate)
+        await axios.put(`${BASE_URL}/news-events/${id}/update`, fieldsToUpdate)
         setFormState(initialFormState)
     }
 
