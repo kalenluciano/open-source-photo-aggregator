@@ -11,7 +11,7 @@ const PhotoCard = ({photo}) => {
     }
 
     const getDateString = () => {
-        if (photo.dateTime === undefined) {
+        if (photo.dateTime === undefined || photo.dateTime === null) {
             return
         }
         const date = new Date(photo.dateTime)

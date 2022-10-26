@@ -11,7 +11,6 @@ const PhotosList = ({photos}) => {
         const eventPhotosList = photos.filter(photo => {
             return id === photo.newsEventId._id
         })
-        console.log(eventPhotosList)
         setEventPhotos(eventPhotosList)
     }
 

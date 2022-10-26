@@ -27,7 +27,7 @@ const AddEventForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = axios.post(`${BASE_URL}/news-events/add`, formState)
+        const response = await axios.post(`${BASE_URL}/news-events/add`, formState)
         setFormState(initialState)
     }
 
@@ -36,11 +36,11 @@ const AddEventForm = () => {
             <h1>Add Event Form</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="newsEventName">News Event Name: </label>
-                <input id="newsEventName" type="text" onChange={handleChange} value={formState.newsEventName} />
+                <input id="newsEventName" type="text" onChange={handleChange} value={formState.newsEventName} required />
                 <label htmlFor="description">Event Description: </label>
                 <input id="description" type="text" onChange={handleChange} value={formState.description} />
                 <label htmlFor="startDate">Event Start Date: </label>
-                <input id="startDate" type="date" onChange={handleChange} value={formState.startDate} />
+                <input id="startDate" type="date" onChange={handleChange} value={formState.startDate} required />
                 <label htmlFor="endDate">Event End Date: </label>
                 <input id="endDate" type="date" onChange={handleChange} value={formState.endDate} />
                 <label htmlFor="streetAddress">Street Address: </label>
