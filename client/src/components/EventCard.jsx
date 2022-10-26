@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const EventCard = ({event, handleClick, photos}) => {    
     const [createdAtString, setCreatedAtString] = useState('')
@@ -7,6 +8,8 @@ const EventCard = ({event, handleClick, photos}) => {
     const [eventImage, setEventImage] = useState('')
     const [validLocation, setValidLocation] = useState(false)
     const [validEndDate, setValidEndDate] = useState(false)
+
+    let navigate = useNavigate()
 
     const getEventImage = () => {
         photos.forEach((photo) => {
@@ -51,6 +54,10 @@ const EventCard = ({event, handleClick, photos}) => {
         setValidEndDate(true)
     }
 
+    const handleEditClick = (eventId) => {
+        navigate(`update/${eventId}`)
+    }
+
     useEffect(() => {
         getEventImage()
         getCreatedAtDateString()
@@ -61,9 +68,9 @@ const EventCard = ({event, handleClick, photos}) => {
     }, [])
 
     return (
-        <div onClick={() => handleClick(event._id)}>
-            {eventImage ? (<img src={eventImage} alt={event.newsEventName}></img>) : null}
-            <h1>{event.newsEventName}</h1>
+        <div>
+            {eventImage ? (<img src={eventImage} alt={event.newsEventName} onClick={() => handleClick(event._id)}></img>) : null}
+            <h1 onClick={() => handleClick(event._id)}>{event.newsEventName}</h1>
             <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p>
             <p>Started: {startDateString}</p> 
             {validEndDate && (<p>Ended: {endDateString}</p>)}
@@ -79,6 +86,7 @@ const EventCard = ({event, handleClick, photos}) => {
                         {event.countries && event.countries.map((country, index) => <p key={index}>{country}</p>)}
                     </div>
                 )}
+            <button onClick={() => handleEditClick(event._id)}>Edit</button>
         </div>
     )
 }

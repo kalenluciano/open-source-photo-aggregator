@@ -11,22 +11,8 @@ import UpdateEventForm from './components/UpdateEventForm';
 import PhotosList from './pages/PhotosList';
 import PhotoCard from './components/PhotoCard';
 import UpdatePhotoForm from './components/UpdatePhotoForm';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { BASE_URL } from './globals';
 
 const App = () => {
-	const [photos, setPhotos] = useState([]);
-
-	const getPhotos = async () => {
-		const response = await axios.get(`${BASE_URL}/photos`);
-		setPhotos(response.data);
-	};
-
-	useEffect(() => {
-		getPhotos();
-	}, []);
-
 	return (
 		<div className="App">
 			<Nav />
