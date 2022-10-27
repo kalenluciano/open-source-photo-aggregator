@@ -58,6 +58,10 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
         navigate(`update/${eventId}`)
     }
 
+    const recheckEventImages = () => {
+        getEventImage()
+    }
+
     useEffect(() => {
         getEventImage()
         getCreatedAtDateString()
@@ -65,6 +69,7 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
         getEndDateString()
         checkValidLocation()
         checkValidEndDate()
+        recheckEventImages()
     }, [])
 
     return (
