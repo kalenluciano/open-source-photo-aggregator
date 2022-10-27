@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
+import { useNavigate } from 'react-router-dom'
 
 const AddPhotoForm = () => {
 
@@ -25,6 +26,8 @@ const AddPhotoForm = () => {
     )
     const [formState, setFormState] = useState(initialState)
 
+    let navigate = useNavigate()
+
     const getEvents = async () => {
         const response = await axios.get(`${BASE_URL}/news-events`)
         setEvents(response.data)
@@ -36,8 +39,10 @@ const AddPhotoForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await axios.post(`${BASE_URL}/photos/add`, formState)
+        await axios.post(`${BASE_URL}/photos/add`, formState)
+        const eventId = formState.newsEventId ? formState.newsEventId : initialState.newsEventId
         setFormState(initialState)
+        navigate(`/photos/${eventId}`)
     }
 
     useEffect(() => {
