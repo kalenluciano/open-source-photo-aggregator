@@ -37,7 +37,7 @@ const AddEventForm = () => {
 
     return (
         <div>
-            <h1>Add Event Form</h1>
+            <h1>Add An Event</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="newsEventName">News Event Name: </label>
                 <input id="newsEventName" type="text" onChange={handleChange} value={formState.newsEventName} required />

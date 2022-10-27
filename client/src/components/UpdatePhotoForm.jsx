@@ -62,7 +62,7 @@ const UpdatePhotoForm = () => {
 
     return (
         <div>
-            <h1>Update Photo Form</h1>
+            <h1>Update A Photo</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="url">Photo Link: </label>
                 <input id="url" type="text" onChange={handleChange} value={formState.url}></input>

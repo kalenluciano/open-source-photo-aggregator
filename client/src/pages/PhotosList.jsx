@@ -5,6 +5,7 @@ import axios from 'axios';
 import { BASE_URL } from '../globals';
 
 const PhotosList = () => {
+    const [event, setEvent] = useState('')
     const [eventPhotos, setEventPhotos] = useState([])
     const [deletedPhoto, toggleDeletedPhoto] = useState(false)
 
@@ -19,6 +20,12 @@ const PhotosList = () => {
         await setEventPhotos(eventPhotosList)
     }
 
+    const getEvent = async () => {
+        const response = await axios.get(`${BASE_URL}/news-events/${id}`)
+        const eventName = response.data.newsEventName
+        await setEvent(eventName)
+    }
+
     const handleDeleteClick = async (photoId) => {
         await axios.delete(`${BASE_URL}/photos/${photoId}/delete`)
         toggleDeletedPhoto(!deletedPhoto)
@@ -26,11 +33,12 @@ const PhotosList = () => {
 
     useEffect(() => {
         getEventPhotos()
+        getEvent()
     }, [deletedPhoto])
 
     return (
         <div>
-            <h1>Photos List</h1>
+            {event ? <h1>Photos From {event}</h1> : null}
             {eventPhotos.map((eventPhoto) => (
                 <PhotoCard photo={eventPhoto} key={eventPhoto._id} handleDeleteClick={handleDeleteClick} />
             ))}

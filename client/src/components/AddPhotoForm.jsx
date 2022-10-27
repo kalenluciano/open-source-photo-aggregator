@@ -51,7 +51,7 @@ const AddPhotoForm = () => {
 
     return (
         <div>
-            <h1>Add Photo Form</h1>
+            <h1>Add A Photo</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="url">Photo Link: </label>
                 <input id="url" type="text" onChange={handleChange} value={formState.url} required></input>

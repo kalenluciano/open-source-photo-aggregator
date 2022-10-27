@@ -37,7 +37,7 @@ const EventsList = () => {
 
     return (
         <div>
-            <h1>Events List</h1>
+            <h1>Events Database</h1>
                 {events.map((event) => (
                     <EventCard event={event} key={event._id} handleClick={handleClick} photos={photos} handleDeleteClick={handleDeleteClick} />
                 ))}

@@ -18,8 +18,9 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Home</h1>
-            <NavLink to="/events" >Click to Events List</NavLink>
+            <h1>Open Source Photo Aggregator</h1>
+            <h3>A collection of photos from the news events around the world.</h3>
+            <NavLink to="/events" >Search News Events Database</NavLink>
             {photos.map(photo => (
                 <div key={photo._id}>
                     <img src={photo.url} alt={photo.description} />

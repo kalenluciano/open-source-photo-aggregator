@@ -33,7 +33,6 @@ const PhotoCard = ({photo, handleDeleteClick}) => {
 
     return (
         <div>
-            <h1>Photo</h1>
             <div key={photo._id}>
                 <img src={photo.url} alt={photo.description} />
                 {photo.photoTitle && <p>{photo.photoTitle}</p>}

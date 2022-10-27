@@ -4,7 +4,6 @@ const Nav = () => {
 
     return (
         <div>
-            <h1>Nav</h1>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events" >Events</NavLink>
             {/* <NavLink to="/photos" >Photos</NavLink> */}
