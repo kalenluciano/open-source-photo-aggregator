@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const EventsList = () => {
     const [photos, setPhotos] = useState([]);
     const [events, setEvents] = useState([])
-    const [deletedEvent, setDeletedEvent] = useState(false)
+    const [deletedEvent, toggleDeletedEvent] = useState(false)
 
     let navigate = useNavigate()
 
@@ -27,7 +27,7 @@ const EventsList = () => {
 
     const handleDeleteClick = async (eventId) => {
         await axios.delete(`${BASE_URL}/news-events/${eventId}/delete`)
-        setDeletedEvent(!deletedEvent)
+        toggleDeletedEvent(!deletedEvent)
     }
 
     useEffect(() => {

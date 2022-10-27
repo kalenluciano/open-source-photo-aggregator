@@ -6,7 +6,7 @@ import { BASE_URL } from '../globals';
 
 const PhotosList = () => {
     const [eventPhotos, setEventPhotos] = useState([])
-    const [deletedPhoto, setDeletedPhoto] = useState(false)
+    const [deletedPhoto, toggleDeletedPhoto] = useState(false)
 
     let { id } = useParams()
 
@@ -21,7 +21,7 @@ const PhotosList = () => {
 
     const handleDeleteClick = async (photoId) => {
         await axios.delete(`${BASE_URL}/photos/${photoId}/delete`)
-        setDeletedPhoto(!deletedPhoto)
+        toggleDeletedPhoto(!deletedPhoto)
     }
 
     useEffect(() => {

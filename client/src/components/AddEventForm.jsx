@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { BASE_URL } from "../globals"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const AddEventForm = () => {
 
@@ -21,6 +22,8 @@ const AddEventForm = () => {
     )
     const [formState, setFormState] = useState(initialState)
 
+    let navigate = useNavigate()
+
     const handleChange = e => {
         setFormState({...formState, [e.target.id]: e.target.value})
     }
@@ -29,6 +32,7 @@ const AddEventForm = () => {
         e.preventDefault()
         await axios.post(`${BASE_URL}/news-events/add`, formState)
         setFormState(initialState)
+        navigate(`/events`)
     }
 
     return (
