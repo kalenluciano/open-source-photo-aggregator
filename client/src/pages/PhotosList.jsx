@@ -16,7 +16,7 @@ const PhotosList = () => {
         const eventPhotosList = photos.filter(photo => {
             return id === photo.newsEventId._id
         })
-        setEventPhotos(eventPhotosList)
+        await setEventPhotos(eventPhotosList)
     }
 
     const handleDeleteClick = async (photoId) => {

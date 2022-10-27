@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../globals"
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const UpdatePhotoForm = () => {
     const [events, setEvents] = useState([])
@@ -19,10 +19,12 @@ const UpdatePhotoForm = () => {
         country: '',
         upvotes: 0,
         downvotes: 0,
+        newsEventId: ''
     })
     const [formState, setFormState] = useState(initialPhotoState)
 
     const { id } = useParams()
+    let navigate = useNavigate()
 
     const getPhoto = async () => {
         const response = await axios.get(`${BASE_URL}/photos/${id}`)
@@ -46,8 +48,10 @@ const UpdatePhotoForm = () => {
                 fieldsToUpdate[field] = formState[field] 
             }
         }
-        await axios.put(`${BASE_URL}/photos/${id}/update`, fieldsToUpdate)
+        const response = await axios.put(`${BASE_URL}/photos/${id}/update`, fieldsToUpdate)
+        console.log(response)
         setFormState(initialPhotoState)
+        navigate(`/photos/${response.data.newsEventId}`)
     }
 
     useEffect(() => {
@@ -64,6 +68,7 @@ const UpdatePhotoForm = () => {
                 <input id="url" type="text" onChange={handleChange} value={formState.url}></input>
                 <label htmlFor="newsEventId">News Event: </label>
                 <select id="newsEventId" onChange={handleChange} >
+                    <option></option>
                     {events.map((event) => (
                         <option key={event._id} value={event._id} >{event.newsEventName}</option>
                     ))}

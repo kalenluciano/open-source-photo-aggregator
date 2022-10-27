@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../globals"
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const UpdateEventForm = () => {
     const [event, setEvent] = useState({})
@@ -15,11 +15,12 @@ const UpdateEventForm = () => {
             city: '',
             state: '',
             zip: '',
-            countries: '',
+            countries: ''
     })
     const [formState, setFormState] = useState(initialFormState)
 
     const { id } = useParams()
+    let navigate = useNavigate()
 
     const getEvent = async () => {
         const response = await axios.get(`${BASE_URL}/news-events/${id}`)
@@ -40,6 +41,7 @@ const UpdateEventForm = () => {
         }
         await axios.put(`${BASE_URL}/news-events/${id}/update`, fieldsToUpdate)
         setFormState(initialFormState)
+        navigate(`/events`)
     }
 
     useEffect(() => {
