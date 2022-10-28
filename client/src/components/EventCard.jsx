@@ -8,7 +8,7 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
     const [eventImage, setEventImage] = useState('')
     const [validLocation, setValidLocation] = useState(false)
     const [validEndDate, setValidEndDate] = useState(false)
-
+    
     let navigate = useNavigate()
 
     const getEventImage = () => {
@@ -73,26 +73,40 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
     }, [])
 
     return (
-        <div>
-            {eventImage ? (<img src={eventImage} alt={event.newsEventName} onClick={() => handleClick(event._id)}></img>) : null}
-            <h1 onClick={() => handleClick(event._id)}>{event.newsEventName}</h1>
-            <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p>
-            <p>Started: {startDateString}</p> 
-            {validEndDate && (<p>Ended: {endDateString}</p>)}
-            {event.description && <p>{event.description}</p>}
-            {validLocation && (
-                    <div>
-                        <p>Location: </p>
-                        {event.streetAddress && <p>{event.streetAddress}</p>}
-                        {event.streetAddress2 && <p>{event.streetAddress2}</p>}
-                        {event.city && <p>{event.city}</p>}
-                        {event.state && <p>{event.state}</p>}
-                        {event.zip && <p>{event.zip}</p>}
-                        {event.countries && event.countries.map((country, index) => <p key={index}>{country}</p>)}
+        <div className="event-container" onClick={() => handleClick(event._id)}>
+            {eventImage ? (<img src={eventImage} alt={event.newsEventName} ></img>) : <img src="https://iaia.edu/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-related-events-placeholder.png" alt="Image placeholder" />}
+            <div className="event-details">
+                <div className="event-header">
+                    <h3>{event.newsEventName}</h3>
+                    <div className="event-header-buttons">
+                        <button onClick={() => handleEditClick(event._id)}>Edit</button>
+                        <button onClick={() => handleDeleteClick(event._id)}>Delete</button>
                     </div>
-                )}
-            <button onClick={() => handleEditClick(event._id)}>Edit</button>
-            <button onClick={() => handleDeleteClick(event._id)}>Delete</button>
+                </div>
+                {/* <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p> */}
+                {validEndDate ? (<p className="event-dates">{startDateString} - {endDateString}</p>) : <p className="event-dates">Started: {startDateString}</p>}
+                <div className="event-description-details">
+                    {event.description && <p>{event.description}</p>}
+                </div>
+                {validLocation && (
+                        <div className="event-location-details">
+                            {/* <div className="event-location-street">
+                                {event.streetAddress && <p>{event.streetAddress}, </p>}
+                                {event.streetAddress2 && <p>{event.streetAddress2}</p>}
+                            </div> */}
+                            <div className="event-location-city-state">
+                                {event.city && <p>{event.city}, </p>}
+                                {event.state && <p>{event.state} </p>}
+                                {event.zip && <p>{event.zip}</p>}
+                            </div>
+                            <div className="event-location-country">
+                                {event.countries && event.countries.map((country, index, arr) => (
+                                    arr.length - 1 === index ? <p key={index}>{country}</p> : <p key={index}>{country}, </p>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+            </div>
         </div>
     )
 }

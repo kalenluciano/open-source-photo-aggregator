@@ -39,9 +39,11 @@ const PhotosList = () => {
     return (
         <div>
             {event ? <h1>Photos From {event}</h1> : null}
-            {eventPhotos.map((eventPhoto) => (
-                <PhotoCard photo={eventPhoto} key={eventPhoto._id} handleDeleteClick={handleDeleteClick} />
-            ))}
+            <div className="photos-grid">
+                {eventPhotos.map((eventPhoto) => (
+                    <PhotoCard photo={eventPhoto} key={eventPhoto._id} handleDeleteClick={handleDeleteClick} />
+                ))}
+            </div>
         </div>
     )
 }

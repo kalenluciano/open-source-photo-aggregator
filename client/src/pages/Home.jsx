@@ -17,7 +17,7 @@ const Home = () => {
 	}, []);
 
     return (
-        <div>
+        <div className='home'>
             <h1>Open Source Photo Aggregator</h1>
             <h3>A collection of photos from news events around the world.</h3>
             <div className='home-news-event-button-container'>
