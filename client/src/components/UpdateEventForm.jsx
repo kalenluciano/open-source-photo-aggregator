@@ -24,7 +24,7 @@ const UpdateEventForm = () => {
 
     const getEvent = async () => {
         const response = await axios.get(`${BASE_URL}/news-events/${id}`)
-        await setEvent(response.data)
+        setEvent(response.data)
     }
 
     const handleChange = e => {

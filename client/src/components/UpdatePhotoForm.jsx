@@ -28,12 +28,12 @@ const UpdatePhotoForm = () => {
 
     const getPhoto = async () => {
         const response = await axios.get(`${BASE_URL}/photos/${id}`)
-        await setPhoto(response.data)
+        setPhoto(response.data)
     }
 
     const getEvents = async () => {
         const response = await axios.get(`${BASE_URL}/news-events`)
-        await setEvents(response.data)
+        setEvents(response.data)
     }
 
     const handleChange = e => {

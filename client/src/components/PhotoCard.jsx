@@ -37,7 +37,7 @@ const PhotoCard = ({photo, handleDeleteClick}) => {
                     <img src={photo.url} alt={photo.description} />
                     <div className="photo-details">
                         <div className="photo-header">
-                            {photo.photoTitle && <p>{photo.photoTitle}</p>}
+                            {photo.photoTitle && <p className="photo-title">{photo.photoTitle}</p>}
                             <div className="photo-header-buttons"> 
                                 <button onClick={() => handleEditClick(photo._id)}>Edit</button>
                                 <button onClick={() => handleDeleteClick(photo._id)}>Delete</button>

@@ -17,13 +17,13 @@ const PhotosList = () => {
         const eventPhotosList = photos.filter(photo => {
             return id === photo.newsEventId._id
         })
-        await setEventPhotos(eventPhotosList)
+        setEventPhotos(eventPhotosList)
     }
 
     const getEvent = async () => {
         const response = await axios.get(`${BASE_URL}/news-events/${id}`)
         const eventName = response.data.newsEventName
-        await setEvent(eventName)
+        setEvent(eventName)
     }
 
     const handleDeleteClick = async (photoId) => {

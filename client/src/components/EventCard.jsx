@@ -73,18 +73,18 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
     }, [])
 
     return (
-        <div className="event-container" onClick={() => handleClick(event._id)}>
-            {eventImage ? (<img src={eventImage} alt={event.newsEventName} ></img>) : <img src="https://iaia.edu/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-related-events-placeholder.png" alt="Image placeholder" />}
+        <div className="event-container" >
+            {eventImage ? (<img src={eventImage} alt={event.newsEventName} onClick={() => handleClick(event._id)} ></img>) : <img src="https://iaia.edu/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-related-events-placeholder.png" alt="Image placeholder" />}
             <div className="event-details">
                 <div className="event-header">
-                    <h3>{event.newsEventName}</h3>
+                    <h3 onClick={() => handleClick(event._id)}>{event.newsEventName}</h3>
                     <div className="event-header-buttons">
                         <button onClick={() => handleEditClick(event._id)}>Edit</button>
                         <button onClick={() => handleDeleteClick(event._id)}>Delete</button>
                     </div>
                 </div>
                 {/* <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p> */}
-                {validEndDate ? (<p className="event-dates">{startDateString} - {endDateString}</p>) : <p className="event-dates">Started: {startDateString}</p>}
+                {validEndDate ? (<p className="event-dates" >{startDateString} - {endDateString}</p>) : <p className="event-dates">Started: {startDateString}</p>}
                 <div className="event-description-details">
                     {event.description && <p>{event.description}</p>}
                 </div>
