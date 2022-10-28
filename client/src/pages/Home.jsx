@@ -19,13 +19,17 @@ const Home = () => {
     return (
         <div>
             <h1>Open Source Photo Aggregator</h1>
-            <h3>A collection of photos from the news events around the world.</h3>
-            <NavLink to="/events" >Search News Events Database</NavLink>
+            <h3>A collection of photos from news events around the world.</h3>
+            <div className='home-news-event-button-container'>
+                <NavLink to="/events" ><button className='home-news-event-button'>Search News Events Database</button></NavLink>
+            </div>
+            <div className='home-photo-grid'>
             {photos.map(photo => (
                 <div key={photo._id}>
                     <img src={photo.url} alt={photo.description} />
                 </div>
             ))}
+            </div>
         </div>
     )
 }
