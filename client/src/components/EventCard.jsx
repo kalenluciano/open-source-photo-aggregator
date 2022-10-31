@@ -83,17 +83,12 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
                         <button onClick={() => handleDeleteClick(event._id)}>Delete</button>
                     </div>
                 </div>
-                {/* <p>Posted by {event.userId.username ? event.userId.username : 'Anonymous'} {createdAtString ? (`on ${createdAtString}`) : null}</p> */}
                 {validEndDate ? (<p className="event-dates" >{startDateString} - {endDateString}</p>) : <p className="event-dates">Started: {startDateString}</p>}
                 <div className="event-description-details">
                     {event.description && <p>{event.description}</p>}
                 </div>
                 {validLocation && (
                         <div className="event-location-details">
-                            {/* <div className="event-location-street">
-                                {event.streetAddress && <p>{event.streetAddress}, </p>}
-                                {event.streetAddress2 && <p>{event.streetAddress2}</p>}
-                            </div> */}
                             <div className="event-location-city-state">
                                 {event.city && <p>{event.city}, </p>}
                                 {event.state && <p>{event.state} </p>}

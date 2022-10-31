@@ -44,9 +44,6 @@ const PhotoCard = ({photo, handleDeleteClick}) => {
                             </div>
                         </div>
                         {photo.dateTime && <p className="photo-date">{photoDate}</p>}
-                        {/* <div>
-                            {photo.userId.username ? (<p>Posted by {photo.userId.username}</p>) : (<p>Posted by Anonymous</p>)}
-                        </div> */}
                         <div className="photo-description-details">
                             {photo.description && <p>{photo.description}</p>}
                         </div>
@@ -66,8 +63,6 @@ const PhotoCard = ({photo, handleDeleteClick}) => {
                                 </div>
                             </div>
                         )}
-                        {/* <p>Upvotes: {photo.upvotes}</p>
-                        <p>Downvotes: {photo.downvotes}</p> */}
                     </div>
             </div>
         </div>

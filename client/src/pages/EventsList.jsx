@@ -13,7 +13,7 @@ const EventsList = () => {
 
     const getPhotos = async () => {
         const response = await axios.get(`${BASE_URL}/photos`);
-        await setPhotos(response.data);
+        setPhotos(response.data);
     };
 
     const getEvents = async () => {
