@@ -49,7 +49,6 @@ const UpdatePhotoForm = () => {
             }
         }
         const response = await axios.put(`${BASE_URL}/photos/${id}/update`, fieldsToUpdate)
-        console.log(response)
         setFormState(initialPhotoState)
         navigate(`/photos/${response.data.newsEventId}`)
     }

@@ -17,23 +17,25 @@ const App = () => {
 		<div className="App">
 			<div className="content-container">
 				<Nav />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/events" element={<EventsList />} />
-					<Route path="/events/:id" element={<EventCard />} />
-					<Route
-						path="/events/update/:id"
-						element={<UpdateEventForm />}
-					/>
-					<Route path="/photos/:id" element={<PhotosList />} />
-					<Route path="/photos/:id" element={<PhotoCard />} />
-					<Route
-						path="/photos/update/:id"
-						element={<UpdatePhotoForm />}
-					/>
-					<Route path="/add/photo" element={<AddPhotoForm />} />
-					<Route path="/add/event" element={<AddEventForm />} />
-				</Routes>
+				<div className="main-content-container">
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/events" element={<EventsList />} />
+						<Route path="/events/:id" element={<EventCard />} />
+						<Route
+							path="/events/update/:id"
+							element={<UpdateEventForm />}
+						/>
+						<Route path="/photos/:id" element={<PhotosList />} />
+						<Route path="/photos/:id" element={<PhotoCard />} />
+						<Route
+							path="/photos/update/:id"
+							element={<UpdatePhotoForm />}
+						/>
+						<Route path="/add/photo" element={<AddPhotoForm />} />
+						<Route path="/add/event" element={<AddEventForm />} />
+					</Routes>
+				</div>
 				<Footer />
 			</div>
 		</div>

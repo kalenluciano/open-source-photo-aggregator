@@ -12,7 +12,6 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
     let navigate = useNavigate()
 
     const getEventImage = () => {
-        console.log(photos)
         photos.forEach((photo) => {
             if (photo.newsEventId._id === event._id) {
                 setEventImage(photo.url)
