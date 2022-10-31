@@ -12,10 +12,10 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
     let navigate = useNavigate()
 
     const getEventImage = () => {
+        console.log(photos)
         photos.forEach((photo) => {
             if (photo.newsEventId._id === event._id) {
                 setEventImage(photo.url)
-                return
             }
         })
     }
@@ -77,7 +77,7 @@ const EventCard = ({event, handleClick, photos, handleDeleteClick}) => {
             {eventImage ? (<img src={eventImage} alt={event.newsEventName} onClick={() => handleClick(event._id)} ></img>) : <img src="https://iaia.edu/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-related-events-placeholder.png" alt="Image placeholder" />}
             <div className="event-details">
                 <div className="event-header">
-                    <h3 onClick={() => handleClick(event._id)}>{event.newsEventName}</h3>
+                    <h3 onClick={() => handleClick(event._id)} className="event-title" >{event.newsEventName}</h3>
                     <div className="event-header-buttons">
                         <button onClick={() => handleEditClick(event._id)}>Edit</button>
                         <button onClick={() => handleDeleteClick(event._id)}>Delete</button>

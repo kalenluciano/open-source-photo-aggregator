@@ -57,6 +57,9 @@ a {
   height: 50px;
   border-radius: 15px;
   cursor: pointer;
+  background-color: #FF5A5F;
+  color: white;
+  font-weight: bold;
 }
 
 .home-photo-grid {
@@ -69,7 +72,7 @@ a {
 .home-photo-grid img {
   margin: 10px;
   height: 300px;
-  min-width: 350px;
+  width: 350px;
   border-radius: 10px;
 }
 
@@ -101,20 +104,31 @@ a {
 
 .event-details, .photo-details {
   color: white;
-  padding: 5px 10px 0 10px;
+  padding: 7px 10px 0 10px;
 }
 
 .event-header, .photo-header {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 5px;
+  display: flex;
 }
 
 .photo-header p {
   font-weight: bold;
 }
 
+.event-title, .photo-title {
+  display: inline;
+  width: 225px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
 .event-header-buttons, .photo-header-buttons {
+  display: inline;
+  width: 100px;
   margin: auto 0;
 }
 
