@@ -66,12 +66,12 @@ Start by going to the deployed app [here](https://open-source-photo-aggregator.h
 
 ### **_Future Features_**
 
-[] Photo details page
-[] Event and photo map views
-[] User authentication
-[] Social media features
-[] Upvote and downvote button for each photo
-[] Comments section to dicuss news events
+-   [ ] Photo details page
+-   [ ] Event and photo map views
+-   [ ] User authentication
+-   [ ] Social media features
+    -   [ ] Upvote and downvote button for each photo
+    -   [ ] Comments section to dicuss news events
 
 ---
 
