@@ -10,8 +10,6 @@ mongoose
 		console.log('Connection error', e.message);
 	});
 
-mongoose.set('debug', true); // Delete this line before deployment
-
 const db = mongoose.connection;
 
 module.exports = db;
