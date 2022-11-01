@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose
-	.connect(process.env.MONGODB_URI)
+	.connect(
+		process.env.MONGODB_URI ||
+			'mongodb://localhost:27012/photoAggregatorDatabase',
+		{ useNewUrlParser: true, useUnifiedTpology: true }
+	)
 	.then(() => {
 		console.log('Successfully connected to MongoDB');
 	})
