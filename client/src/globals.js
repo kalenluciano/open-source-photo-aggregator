@@ -1,1 +1,2 @@
-export const BASE_URL = 'https://open-source-photo-aggregator.herokuapp.com';
+export const BASE_URL =
+	process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001';
